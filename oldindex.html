@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    {{username}}
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+    <hr>
+
+    <table>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th>Quantity</th>
+        <th>Description</th>
+      </tr>
+      {% for soz_transaction in soz_transactions %}
+        <tr>
+          <td>{{ soz_transaction.from_user.nickname() }}</td>
+          <td>
+            {% if soz_transaction.to_user %}
+              {{ soz_transaction.to_user.nickname() }}
+            {% endif %}
+          </td>
+          <td>
+            {{ soz_transaction.date.strftime("%Y/%m/%d") }}
+          </td>
+          <td>
+            {{ soz_transaction.quantity }}
+          </td>
+          <td><blockquote>{{ soz_transaction.description }}</blockquote></td>
+
+        </tr>
+      {% endfor %}
+    </table>
+
+    <form action="/soz" method="post">
+      <div>
+        Quantity:<br /><input type="text" name="quantity" />
+      </div>
+      <div>
+        Description:<br/><textarea name="description" rows="3" cols="30"></textarea>
+      </div>
+      {% if users.get_current_user() %}
+        <div><input type="submit" value="Submit"></div>
+      {% endif %}
+    </form>
+  </body>
+</html>
+{% endautoescape %}

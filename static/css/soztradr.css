@@ -1,0 +1,59 @@
+.listheader {
+	margin-bottom: 5px;
+	font-weight: normal;
+	font-size: .75em;
+}
+
+.rejected { 
+	color:#AAAAAA;
+	text-decoration: line-through;
+}
+
+.tocomplete { 
+	color:red;
+}
+
+.fromcomplete { 
+	color:green;
+}
+
+.sozamount {
+	font-size: 1.4em;
+}
+
+.smallgrey {
+	font-size:.7em;
+	color:#777777;
+}
+
+.fieldlabel {
+    font-weight: bold;
+	color: #AAAAAA;
+    float: left;
+    width: 45px;
+    text-align: right;
+    margin-right: 4px;
+}
+
+.fieldlabelwide {
+	font-weight: bold;
+	color: #AAAAAA;
+    float: left;
+    width: 80px;
+    text-align: right;
+    margin-right: 4px;
+}
+
+
+.description {
+	white-space: normal;
+}
+
+.toemail {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.backgreen { 
+	background-color: rgb(255,255,0);
+}

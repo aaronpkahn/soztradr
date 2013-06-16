@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title></title>
+  <link rel="stylesheet" href="static/css/soztradr.css">
+  <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+  <script src="static/js/soztradr.js"></script>
+  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+</head>
+<body>
+  <div data-role="page" id="SendPage">
+    <div data-theme="a" data-role="header">
+        <h3>
+            SoZ Tradr
+        </h3>
+        <a href="{{ logout_url|safe }}" rel="external">Logout</a>
+    </div>
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+      <div data-role="navbar" data-iconpos="left">
+        <ul>
+            <li>
+                <a href="/" data-transition="fade" data-theme="" data-icon="plus"
+                class="ui-btn-active ui-state-persist">
+                    Send
+                </a>
+            </li>
+            <li>
+                <a href="/recent" data-transition="fade" data-theme="" data-icon="grid">
+                    Recent
+                </a>
+            </li>
+            <li>
+                <a href="/mysoz" data-transition="fade" data-theme="" data-icon="bars">
+                    My SoZ
+                </a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="content">
+      <!--TODO: make a css file-->
+      {% if errormsg %}<span style="color:red">{{errormsg}}</span>{% endif %}
+      <form action="send" method="POST">
+          <div data-role="fieldcontain">
+              <label for="searchinput1">
+                  From: <b>{{user.nickname()}}</b> <span class="smallgrey">({{user.email()}})</span>
+              </label>
+          </div>
+          <div data-role="fieldcontain">
+              <label for="searchinput1">
+                  To:
+              </label>
+              <input name="to_email" id="to_email" placeholder="enter an email address"
+              value="" type="search" >
+          </div>
+          <div data-role="fieldcontain">
+              <label for="textinput2">
+                  Quantity ({{share_count}} available):
+              </label>
+              <input name="quantity" id="textinput2" placeholder="enter a share quantity"
+              value="" type="number">
+          </div>
+          <div data-role="fieldcontain">
+              <label for="textarea2">
+                  Description:
+              </label>
+              <textarea name="description" id="textarea2" placeholder="enter a description"
+              data-mini="true"></textarea>
+          </div>
+          <input type="submit" data-theme="e" data-icon="plus" data-iconpos="left"
+          value="Send Shares">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+{% endautoescape %}
